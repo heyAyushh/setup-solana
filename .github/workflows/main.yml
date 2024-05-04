@@ -10,7 +10,7 @@ jobs:
         id: foo
         uses: heyAyushh/setup-solana@v5.1
         with:
-          solana-cli-version: 'edge'
+          solana-cli-version: 'latest'
       - name: check solana version
         run: solana -V
         shell: bash
