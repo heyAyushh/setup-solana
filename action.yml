@@ -56,7 +56,7 @@ runs:
     - name: Install Solana CLI tools
       if: steps.cache-solana.outputs.cache-hit != 'true'
       run: |
-        sh -c "$(curl -sSfL https://release.solana.com/${{ steps.solana-release.outputs.install_version }}/install)"
+        sh -c "$(curl -sSfL https://release.anza.xyz/${{ steps.solana-release.outputs.install_version }}/install)"
       shell: bash
     - name: Update PATH
       run: echo "/home/runner/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
