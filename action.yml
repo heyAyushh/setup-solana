@@ -14,7 +14,7 @@ runs:
     - name: Checkout version script
       uses: actions/checkout@v4
       with:
-        repository: metaDAOproject/setup-solana
+        repository: heyAyushh/setup-solana
         path: .ci
     - name: Determine Solana CLI version
       id: solana-release
