@@ -34,8 +34,8 @@ runs:
         echo "Using Solana CLI version $VERSION"
         echo "install_version=v$VERSION" >> $GITHUB_OUTPUT
         echo "version=$VERSION" >> $GITHUB_OUTPUT
-        # Add version to cache key
-        echo "cache_key=solana-${{ runner.os }}-v$VERSION" >> $GITHUB_OUTPUT
+        # Use week number instead of month for cache key
+        echo "cache_key=solana-${{ runner.os }}-v$VERSION-$(date +%Y%V)" >> $GITHUB_OUTPUT
       shell: bash
 
     # Clean existing installations to prevent version conflicts
@@ -63,8 +63,6 @@ runs:
           ~/.cargo/bin/cargo-build-sbf
           ~/.cargo/bin/cargo-test-sbf
         key: ${{ steps.solana-release.outputs.cache_key }}
-        restore-keys: |
-          solana-${{ runner.os }}-v
 
     - name: Install Solana CLI tools
       run: |
@@ -91,7 +89,7 @@ runs:
           sh -c "$(curl -sSfL https://release.anza.xyz/v$EXPECTED_VERSION/install)"
         fi
         
-        echo "Solana version:"
+        echo "Final Solana version:"
         solana --version
         cargo-build-sbf --version
       shell: bash
