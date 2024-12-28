@@ -34,7 +34,7 @@ runs:
         echo "Using Solana CLI version $VERSION"
         echo "install_version=v$VERSION" >> $GITHUB_OUTPUT
         echo "version=$VERSION" >> $GITHUB_OUTPUT
-        # Use week number instead of month for cache key
+        # Use year and week number for cache key
         echo "cache_key=solana-${{ runner.os }}-v$VERSION-$(date +%Y%V)" >> $GITHUB_OUTPUT
       shell: bash
 
