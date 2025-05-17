@@ -29,6 +29,10 @@ runs:
           # Extract version number from STABLE_CHANNEL_LATEST_TAG (remove 'v' prefix)
           VERSION="${STABLE_CHANNEL_LATEST_TAG#v}"
           echo "Using stable version: $VERSION"
+        elif [[ "$VERSION" == "beta" ]]; then
+          # Extract version number from BETA_CHANNEL_LATEST_TAG (remove 'v' prefix)
+          VERSION="${BETA_CHANNEL_LATEST_TAG#v}"
+          echo "Using stable version: $VERSION"
         fi
         
         echo "Using Solana CLI version $VERSION"
