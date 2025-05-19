@@ -63,12 +63,12 @@ runs:
           ~/.cache/solana/
           ~/.local/share/solana/
           ~/.solana/
-          ~/.config/solana/
           ~/.cargo/bin/cargo-build-sbf
           ~/.cargo/bin/cargo-test-sbf
         key: ${{ steps.solana-release.outputs.cache_key }}
 
     - name: Install Solana CLI tools
+      if: steps.cache-solana.outputs.cache-hit != 'true'
       run: |
         sh -c "$(curl -sSfL https://release.anza.xyz/${{ steps.solana-release.outputs.install_version }}/install)"
       shell: bash
