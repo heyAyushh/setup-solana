@@ -41,7 +41,17 @@ runs:
         # Use year and week number for cache key
         echo "cache_key=solana-${{ runner.os }}-v$VERSION-$(date +%Y%V)" >> $GITHUB_OUTPUT
       shell: bash
-
+    
+    - name: Set up Solana environment Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+        build-essential \
+        pkg-config \
+        libudev-dev llvm libclang-dev \
+        protobuf-compiler libssl-dev
+      shell: bash
+      
     # Clean existing installations to prevent version conflicts
     - name: Clean existing Solana installation
       run: |
